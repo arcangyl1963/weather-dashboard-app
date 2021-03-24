@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;  
+}
+#jtron {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900;
+    color: white;
+    background-color: #1b1a1a;
+    text-align: center;
+}
+.display-4 {
+    font-size: 5em;
+}
+h4, h3 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+}
+.fCast{
+    
+    font-size: 0.9em;
+}
+span{
+    font-size: 1em;
+}
+li:hover{
+    background-color: lightslategray;
+    text-decoration: underline;
+}
