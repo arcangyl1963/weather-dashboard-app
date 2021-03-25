@@ -29,11 +29,11 @@ function showWeather(event) {
     event.preventDefault();
     if(srchCity.val().trim()!=='') {
         enteredCity = srchCity.val().trim();
-        currentWeather(enteredCity);
+        currWeather(enteredCity);
     }
 }
 
-function currentWeather(city) {
+function currWeather(city) {
     var apiURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + enteredCity + '&appid=' + apiKey;
     $.ajax({url: apiURL, method: 'GET'}).then(function(response) {
 
@@ -56,7 +56,7 @@ function currentWeather(city) {
             $(currWinSpd).html(windSpdMPH + 'MPH');
 
             uvIndex(response.coord.lon, response.coord.lat);
-            fCast(response.id);
+            forecast(response.id);
             if (response.cod==200) {
                 savedCity = JSON.parse(localStorage.getItem('currCity'));
                 console.log(savedCity);
@@ -83,7 +83,7 @@ function uvIndex(ln, lt) {
     });
 }
 
-function fCast(cityID){
+function forecast(cityID){
     var EoD = false;
     var queryfCastURL = 'https://api.openweathermap.org/data/2.5/forecast?id=' + cityID + '&appid=' + apiKey;
     $.ajax({url: queryfCastURL, method: 'GET'}).then(function(response){
@@ -106,4 +106,39 @@ function addToList(cty) {
     var myListEL = $('<li>' + cty.toUpperCase() + "</li>");
     $(myListEL).attr('class', 'listItemGrp');
     $(myListEL).attr('data-value', cty.toUpperCase());
+    $('.listGroup').append(myListEL);
 }
+
+//Show past search history data when the item in the list is clicked
+function showSrchHstyData(event) {
+    var myLiEl = event.target;
+    if (event.target.matches("li")) {
+        enteredCity = myLiEl.textContent.trim();
+        currWeather(enteredCity);
+    }
+}
+
+function showLstCty() {
+    $('ul').empty();
+    var savedCity = JSON.parse(localStorage.getItem('currCity'));
+    if (savedCity !== null) {
+        savedCity = JSON.parse(localStorage.getItem('currCity'));
+        for (i=0; i < savedCity.length; i++) {
+            addToList(savedCity[i]);
+        }
+        enteredCity = savedCity[i - 1];
+        currWeather(enteredCity);
+    }
+}
+
+function clearHstry(event) {
+    event.preventDefault();
+    savedCity = [];
+    localStorage.removeItem('currCity');
+    document.location.reload();
+}
+
+$('#searchBtn').on('click', showWeather);
+$(document).on('click', showSrchHstyData);
+$(window).on('load', showLstCty);
+$('#clearHsty').on('click', clearHstry);
