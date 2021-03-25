@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;  
 }
+html { 
+    font-size: 2vw;
+}
 #jtron {
     font-family: 'Kanit', sans-serif;
     font-weight: 900;
@@ -9,21 +12,21 @@
     text-align: center;
 }
 .display-4 {
-    font-size: 5em;
+    font-size: 2.25rem;
 }
 h4, h3 {
     font-family: 'Kanit', sans-serif;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 body {
     font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
+    font-size: .5em;
 }
-.fCast{
-    
-    font-size: 0.9em;
+.forecast {
+    font-size: .8em;
 }
+
 span{
     font-size: 1em;
 }
