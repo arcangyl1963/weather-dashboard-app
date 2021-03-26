@@ -25,7 +25,7 @@ The second image shows a city name entered into the text field for the city sear
 
 ![City search text entry field.](./assets/images/weather-app_screen2.jpg)
 
-The third image shows the retrieved weather information for current day and 5-day forecast for the searched city.
+The third image shows the retrieved weather information for current day and 5-day forecast for the searched city. Additionally, it shows the 3 states of the UV Index color labeling based on the index value received from the API
 
 ![Searched city weather info screen](./assets/images/weather-app_screen3.jpg)
 
