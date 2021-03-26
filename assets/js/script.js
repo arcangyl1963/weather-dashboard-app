@@ -90,6 +90,13 @@ function uvIndex(ln, lt) {
     ln;
   $.ajax({ url: queryuvURL, method: 'GET' }).then(function (response) {
     $(currUVdex).html(response.value);
+    if (response.value >= 8) {
+      $(currUVdex).removeClass('bg-success bg-warning').addClass('bg-danger');
+    } else if (response.value >= 3 || response.value <= 7) {
+      $(currUVdex).removeClass('bg-danger bg-success').addClass('bg-warning');
+    } else {
+      $(currUVdex).removeClass('bg-danger bg-warning').addClass('bg-success');
+    }
   });
 }
 
